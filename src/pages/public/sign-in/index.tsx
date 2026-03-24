@@ -5,8 +5,7 @@ import { LoginForm } from "./components/login-form"
 
 export function SignIn() {
   return (
-    <div className="min-h-svh grid lg:grid-cols-[1fr_1.15fr] bg-background">
-      {/* Left Panel — Form */}
+    <div className="grid min-h-svh bg-background lg:grid-cols-[1fr_1.15fr]">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -42,7 +41,6 @@ export function SignIn() {
         </motion.p>
       </motion.div>
 
-      {/* Right Panel — Visual */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -50,7 +48,6 @@ export function SignIn() {
         className="hidden lg:block"
       >
         <div className="relative m-4 h-[calc(100vh-2rem)] overflow-hidden rounded-2xl bg-primary">
-          {/* Dot grid */}
           <div
             className="absolute inset-0 opacity-[0.12]"
             style={{
@@ -60,17 +57,14 @@ export function SignIn() {
             }}
           />
 
-          {/* Depth blobs */}
           <div className="absolute -top-24 -right-24 size-96 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute bottom-0 -left-20 size-80 rounded-full bg-white/[0.08] blur-3xl" />
-          <div className="absolute top-1/2 right-0 size-64 rounded-full bg-white/[0.06] blur-2xl" />
+          <div className="absolute bottom-0 -left-20 size-80 rounded-full bg-white/8 blur-3xl" />
+          <div className="absolute top-1/2 right-0 size-64 rounded-full bg-white/6 blur-2xl" />
 
-          {/* Concentric rings */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] size-[680px] rounded-full border border-white/10" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] size-[480px] rounded-full border border-white/[0.15]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[55%] size-[300px] rounded-full border border-white/20" />
+          <div className="absolute top-1/2 left-1/2 size-170 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/10" />
+          <div className="absolute top-1/2 left-1/2 size-120 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/[0.15]" />
+          <div className="absolute top-1/2 left-1/2 size-75 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/20" />
 
-          {/* Content */}
           <div className="relative z-10 flex h-full flex-col p-10">
             <div className="flex flex-1 items-center justify-center">
               <img
@@ -81,11 +75,11 @@ export function SignIn() {
             </div>
 
             <div className="space-y-1.5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/60">
+              <p className="text-xs font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
                 Plataforma Terapêutica
               </p>
               <h2
-                className="max-w-xs text-2xl font-bold leading-snug text-primary-foreground"
+                className="max-w-xs text-2xl leading-snug font-bold text-primary-foreground"
                 style={{ fontFamily: '"Montserrat Variable", sans-serif' }}
               >
                 Gestão inteligente para profissionais de saúde mental

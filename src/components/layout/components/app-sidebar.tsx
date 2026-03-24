@@ -1,6 +1,13 @@
-import { IndentDecrease, LayoutDashboard } from "lucide-react"
+import {
+  DoorOpen,
+  FileText,
+  Grid2x2,
+  HeartHandshake,
+  Users,
+} from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
-
+import iconLogo from "@/assets/icon-logo.png"
+import { useAuth } from "@/hooks/use-auth"
 import {
   Sidebar,
   SidebarContent,
@@ -16,34 +23,56 @@ import { NavUser } from "./nav-user"
 
 const routes = {
   mainRoutes: [
-    { to: "/app", label: "Home", tooltip: "Home", icon: LayoutDashboard },
-    { to: "/app/menu", label: "Menu", tooltip: "Menu", icon: LayoutDashboard },
+    {
+      icon: Grid2x2,
+      label: "Dashboard",
+      tooltip: "Dashboard",
+      to: "/app",
+    },
+    {
+      label: "Equipe",
+      tooltip: "Equipe",
+      icon: HeartHandshake,
+      to: "/app/collaborators",
+    },
+    {
+      icon: Users,
+      label: "Pacientes",
+      to: "/app/patients",
+      tooltip: "Pacientes",
+    },
+    {
+      label: "Salas",
+      icon: DoorOpen,
+      tooltip: "Salas",
+      to: "/app/rooms",
+    },
+    {
+      icon: FileText,
+      to: "/app/forms",
+      label: "Formulários",
+      tooltip: "Formulários",
+    },
   ],
 }
 
 export function AppSidebar() {
   const { pathname } = useLocation()
-
-  const user = {
-    name: "Ronaldo Filho",
-    email: "ronaldo.alves.1997@gmail.com",
-    avatar: "https://github.com/ronaldoapf.png",
-  }
+  const { clinic, user } = useAuth()
 
   return (
     <Sidebar variant="inset">
       <SidebarHeader className="pt-3">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:p-1.5!"
-            >
-              <Link to="/app">
-                <IndentDecrease className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </Link>
-            </SidebarMenuButton>
+            <div className="ml-1.5 flex items-center gap-3">
+              <img src={iconLogo} width={20} alt="Logo Thera" />
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">
+                  {clinic?.legalName}
+                </span>
+              </div>
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

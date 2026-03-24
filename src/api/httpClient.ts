@@ -2,14 +2,14 @@ import axios from 'axios'
 
 const TOKEN_KEY = '@clinic:token'
 
-export const apiClient = axios.create({
+export const httpClient = axios.create({
 	baseURL: import.meta.env.VITE_API_URL,
 	headers: {
 		'Content-Type': 'application/json',
 	},
 })
 
-apiClient.interceptors.request.use(
+httpClient.interceptors.request.use(
 	(config) => {
 		const token = localStorage.getItem(TOKEN_KEY)
 

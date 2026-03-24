@@ -1,18 +1,94 @@
-import { GalleryVerticalEnd } from 'lucide-react'
-import { SignupForm } from './components/sign-up-form'
+import { motion } from "framer-motion"
+import logo from "@/assets/logo.png"
+import onboardingImage from "@/assets/onboarding.png"
+import { SignupForm } from "./components/sign-up-form"
 
 export function SignUp() {
-	return (
-		<div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
-			<div className="flex w-full max-w-sm flex-col gap-6">
-				<a href="#" className="flex items-center gap-2 self-center font-medium">
-					<div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-						<GalleryVerticalEnd className="size-4" />
-					</div>
-					Acme Inc.
-				</a>
-				<SignupForm />
-			</div>
-		</div>
-	)
+  return (
+    <div className="grid min-h-svh bg-background lg:grid-cols-[1fr_1.15fr]">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
+        className="flex flex-col px-8 py-10 md:px-16"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
+          <img src={logo} width={130} alt="Thera" />
+        </motion.div>
+
+        <div className="flex flex-1 items-center justify-center py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+            className="w-full max-w-sm"
+          >
+            <SignupForm />
+          </motion.div>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-xs text-muted-foreground"
+        >
+          © {new Date().getFullYear()} Thera. Todos os direitos reservados.
+        </motion.p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="hidden lg:block"
+      >
+        <div className="relative m-4 h-[calc(100vh-2rem)] overflow-hidden rounded-2xl bg-primary">
+          <div
+            className="absolute inset-0 opacity-[0.12]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          <div className="absolute -top-24 -right-24 size-96 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute bottom-0 -left-20 size-80 rounded-full bg-white/8 blur-3xl" />
+          <div className="absolute top-1/2 right-0 size-64 rounded-full bg-white/6 blur-2xl" />
+
+          <div className="absolute top-1/2 left-1/2 size-170 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/10" />
+          <div className="absolute top-1/2 left-1/2 size-120 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/15" />
+          <div className="absolute top-1/2 left-1/2 size-75 -translate-x-1/2 -translate-y-[55%] rounded-full border border-white/20" />
+
+          {/* Content */}
+          <div className="relative z-10 flex h-full flex-col p-10">
+            <div className="flex flex-1 items-center justify-center">
+              <img
+                src={onboardingImage}
+                className="max-h-[62vh] w-auto object-contain drop-shadow-[0_24px_48px_rgba(0,0,0,0.35)]"
+                alt="Thera onboarding"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <p className="text-xs font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
+                Comece agora
+              </p>
+              <h2
+                className="max-w-xs text-2xl leading-snug font-bold text-primary-foreground"
+                style={{ fontFamily: '"Montserrat Variable", sans-serif' }}
+              >
+                Crie sua conta e simplifique sua prática clínica
+              </h2>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  )
 }
